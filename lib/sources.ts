@@ -127,6 +127,17 @@ export const evidence: Record<string, Evidence> = {
     sourceDocument: 'Dr. Marina A. Lobova — professional biography',
     sourceLocation: 'Opening paragraph',
   },
+
+  metaGenesisNatureMarine: {
+    id: 'metaGenesisNatureMarine',
+    quote:
+      'Meta Genesis is presented as a quantum-biocomputing framework built on foundational research in physics, neuroscience and psychology.',
+    attribution: 'Nature Marine',
+    publication: 'naturemarine.vip',
+    sourceDocument: 'Nature Marine — Meta Genesis product page',
+    sourceLocation: 'Programme overview',
+    sourceUrl: 'https://naturemarine.vip/',
+  },
 }
 
 export function getEvidence(id: keyof typeof evidence): Evidence {
