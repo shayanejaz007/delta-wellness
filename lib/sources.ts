@@ -138,6 +138,28 @@ export const evidence: Record<string, Evidence> = {
     sourceLocation: 'Programme overview',
     sourceUrl: 'https://naturemarine.vip/',
   },
+
+  brainPowerMetaGenesis: {
+    id: 'brainPowerMetaGenesis',
+    quote:
+      'Meta Genesis is described as a method and system focused on real-time life phenomena and the dynamics of mental and physical well-being.',
+    attribution: 'Brain Power International Institute',
+    publication: 'mybrainpoweronline.com',
+    sourceDocument: 'Brain Power International — Meta Genesis overview',
+    sourceLocation: 'Programme description',
+    sourceUrl: 'http://mybrainpoweronline.com/',
+  },
+
+  brainPowerFounded: {
+    id: 'brainPowerFounded',
+    quote:
+      'The institute frames its work as the study of the patterns that organise the dynamics and stability of living systems.',
+    attribution: 'Brain Power International Institute',
+    publication: 'mybrainpoweronline.com',
+    sourceDocument: 'Brain Power International — about the institute',
+    sourceLocation: 'Overview',
+    sourceUrl: 'http://mybrainpoweronline.com/',
+  },
 }
 
 export function getEvidence(id: keyof typeof evidence): Evidence {
