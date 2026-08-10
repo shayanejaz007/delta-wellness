@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!--
+    Favicon.
+
+    The full wordmark is unreadable at 16px, so the mark reduces to the letter
+    the brand is named for: a delta, carrying the same violet-to-teal gradient
+    as WELLNESS in the wordmark. Solid rounded tile rather than a transparent
+    glyph, so it holds up against both light and dark browser chrome.
+  -->
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7B5EA7"/>
+      <stop offset="50%" stop-color="#4E7BA8"/>
+      <stop offset="100%" stop-color="#2E8C93"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="64" height="64" rx="14" fill="#F7F6F2"/>
+  <path d="M32 15 L49 47 H15 Z" fill="none" stroke="url(#g)" stroke-width="5"
+        stroke-linejoin="round"/>
+</svg>
