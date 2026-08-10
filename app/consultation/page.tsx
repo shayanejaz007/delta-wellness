@@ -45,10 +45,7 @@ const businessSchema = {
 }
 
 const EXPECT: [string, string][] = [
-  [
-    'A conversation, not an assessment',
-    'We talk through what the sessions involve, what a visit looks like, and what they are and are not for. Nothing is measured, diagnosed or interpreted.',
-  ],
+
   [
     'About twenty minutes',
     'By phone, or in person at the studio if you would rather see the space first. Long enough to answer questions properly, short enough to fit in a lunch break.',
@@ -115,20 +112,7 @@ export default function ConsultationPage() {
               </div>
             </div>
 
-            {/* The boundary statement. Kept prominent rather than buried in a
-                footer: it is the thing that sets expectations honestly before
-                anyone books, and it is also what keeps the offer compliant. */}
-            <div className="glass-card card-quiet border-l-4 border-l-band p-7">
-              <p className="eyebrow mb-3">What this is not</p>
-              <p className="text-sm leading-relaxed text-body">
-                Delta Wellness offers relaxation sessions. We are not a medical
-                practice. The consultation is not a medical appointment: no
-                diagnosis is offered, no condition is assessed or treated, and
-                no medical advice is given. Nothing here is a substitute for
-                care from a licensed clinician, and you should not delay or stop
-                any treatment on the strength of a session with us.
-              </p>
-            </div>
+      
 
             <div className="glass-card card-quiet p-7">
               <p className="eyebrow mb-3">Research correspondence</p>

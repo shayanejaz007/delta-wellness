@@ -186,10 +186,6 @@ export default function ConsultationForm() {
           Anything you would like us to know (optional)
         </span>
         <textarea name="note" rows={5} className="field resize-y" />
-        <span className="mt-2 block text-xs text-muted">
-          Please do not send medical information or health records — this is not
-          a clinical channel and we are not able to advise on health matters.
-        </span>
       </label>
 
       {/* Honeypot: hidden from people, tempting to bots. */}

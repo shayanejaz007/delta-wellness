@@ -78,12 +78,7 @@ export default function TeamPage() {
     <div className="pt-32">
       <section className="shell section-tight pb-0">
         <SectionLabel extent="24%">People</SectionLabel>
-        <h1 className="mb-10 max-w-[14ch]">Our people</h1>
-        <p className="lede measure">
-          Roles at Delta Wellness are stated by the organisation. Biographical
-          material is drawn from cited sources and from professional biographies
-          supplied by each person.
-        </p>
+        <h1 className="mb-10 max-w-[14ch]">Our Team</h1>
       </section>
 
       {/* Chief medical officer \u2014 the profile that carries the most weight. */}
@@ -184,9 +179,7 @@ export default function TeamPage() {
           </div>
         </div>
 
-        <div className="reveal mt-6 max-w-4xl" data-delay="90">
-          <SourceEvidence id="lobovaBiography" />
-        </div>
+        
       </section>
 
       {/* Chief executive \u2014 published at his own request as a name and an
@@ -199,7 +192,6 @@ export default function TeamPage() {
               role="img"
               aria-label="No portrait is published for this profile, at the subject's request."
             >
-              <p className="eyebrow">No portrait published</p>
             </div>
 
             <div>
@@ -256,19 +248,6 @@ export default function TeamPage() {
         </div>
       </section>
 
-      <section className="shell section-tight pt-0">
-        <div className="max-w-3xl border-l-2 border-band/60 py-6 pl-6 sm:pl-8">
-          <p className="eyebrow mb-3">Pending profiles</p>
-          <p className="text-sm leading-relaxed text-body">
-            Organisational roles above are published as stated by Delta
-            Wellness. Career and biographical material is drawn from cited
-            sources and from professional biographies supplied by each person,
-            and is attributed as such. Clinical results and patient outcomes are
-            not published on these profiles. Further profiles are added on the
-            same basis.
-          </p>
-        </div>
-      </section>
 
       <script
         type="application/ld+json"

@@ -106,10 +106,6 @@ export default function ContactForm() {
           aria-describedby={fieldErrors.message ? 'message-error' : 'message-hint'}
           className="field"
         />
-        <p id="message-hint" className="mt-2 text-xs text-body">
-          Please do not send medical records, test results or other confidential
-          health information through this form. It is not a secure channel.
-        </p>
         {fieldErrors.message && (
           <p id="message-error" className="mt-2 text-sm num-band">
             {fieldErrors.message[0]}

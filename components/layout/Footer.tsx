@@ -95,12 +95,6 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 border-t border-[var(--line)] pt-7">
-          <p className="max-w-3xl text-xs leading-relaxed text-muted">
-            The material on this site is presented for research and educational
-            purposes. It is not medical advice, not a diagnosis, and not a
-            recommendation for treatment. Publications are summarised with
-            attribution; rights remain with their authors and publishers.
-          </p>
           <p className="mt-5 text-xs text-muted">
             © {new Date().getFullYear()} Delta Wellness
           </p>
