@@ -62,7 +62,9 @@ export default function Nav() {
         </Link>
 
         <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
-          {NAV_LINKS.slice(1).map((link) => {
+          {NAV_LINKS.slice(1)
+            .filter((link) => link.href !== '/consultation')
+            .map((link) => {
             const active = pathname === link.href
             return (
               <Link
@@ -77,8 +79,8 @@ export default function Nav() {
               </Link>
             )
           })}
-          <Link href="/contact" className="btn btn-primary !py-2.5 !text-sm">
-            Contact us
+          <Link href="/consultation" className="btn btn-primary !py-2.5 !text-sm">
+            Free consultation
           </Link>
         </nav>
 
@@ -113,17 +115,22 @@ export default function Nav() {
           className="glass mx-auto mt-2 max-w-[78rem] p-4 lg:hidden"
         >
           <nav aria-label="Mobile" className="flex flex-col">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="border-b border-[var(--line)] py-3.5 font-display text-xl text-ink last:border-0"
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Link href="/contact" className="btn btn-primary mt-4 justify-center">
-              Contact us
+            {NAV_LINKS.filter((link) => link.href !== '/consultation').map(
+              (link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="border-b border-[var(--line)] py-3.5 font-display text-xl text-ink last:border-0"
+                >
+                  {link.label}
+                </Link>
+              ),
+            )}
+            <Link
+              href="/consultation"
+              className="btn btn-primary mt-4 justify-center"
+            >
+              Free consultation
             </Link>
           </nav>
         </div>

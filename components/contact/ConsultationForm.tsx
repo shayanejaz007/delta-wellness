@@ -39,7 +39,12 @@ export default function ConsultationForm() {
     setStatus('sending')
     setFieldErrors({})
 
-    const form = new FormData(event.currentTarget)
+    // Capture the form element now. React reuses the synthetic event after the
+    // first await, so reading event.currentTarget later returns null and any
+    // call on it throws — which would drop a successful submit into the catch
+    // block and show the user an error even though the email was sent.
+    const formEl = event.currentTarget
+    const form = new FormData(formEl)
     const reason = String(form.get('reason') ?? REASONS[0])
     const preferredTime = String(form.get('preferredTime') ?? '')
     const contactMethod = String(form.get('contactMethod') ?? '')
@@ -85,7 +90,7 @@ export default function ConsultationForm() {
         'Thank you — your request has reached us. We will be in touch shortly to arrange a time, and a confirmation is on its way to your inbox.',
       )
       setStatus('sent')
-      event.currentTarget.reset()
+      formEl.reset()
     } catch {
       setNotice('Something went wrong sending that. Please try again.')
       setStatus('error')
@@ -186,6 +191,10 @@ export default function ConsultationForm() {
           Anything you would like us to know (optional)
         </span>
         <textarea name="note" rows={5} className="field resize-y" />
+        <span className="mt-2 block text-xs text-muted">
+          Please do not send medical information or health records — this is not
+          a clinical channel and we are not able to advise on health matters.
+        </span>
       </label>
 
       {/* Honeypot: hidden from people, tempting to bots. */}

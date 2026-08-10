@@ -17,15 +17,15 @@ export const NAV_LINKS = [
  * drift apart between the consultation page, the footer and the schema.
  */
 export const CONTACT = {
-  street: '227 78th Street',
-  city: 'North Bergen',
+  street: '661 East Palisades Ave, Suite A4',
+  city: 'Englewood Cliffs',
   region: 'NJ',
-  postalCode: '07047',
+  postalCode: '07632',
   phone: '+1-551-401-2604',
   phoneHref: '+15514012604',
   phoneDisplay: '(551) 401-2604',
   mapsUrl:
-    'https://www.google.com/maps/search/?api=1&query=227+78th+Street+North+Bergen+NJ+07047',
+    'https://www.google.com/maps/search/?api=1&query=661+East+Palisades+Ave+Suite+A4+Englewood+Cliffs+NJ+07632',
 } as const
 
 export function pageMeta(
