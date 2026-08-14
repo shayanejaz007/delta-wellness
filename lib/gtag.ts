@@ -19,8 +19,15 @@
 export const GADS_ID = 'AW-18379237482'
 
 export const CONVERSIONS = {
+  /**
+   * Phone call conversion. Still falling back to the account id: create a
+   * "Phone call lead" action under Goals -> Conversions and paste its
+   * `send_to` value here to report calls separately from form fills.
+   */
   phoneCall: GADS_ID,
-  leadForm: GADS_ID,
+
+  /** "Submit lead form" action, created in the Ads UI. */
+  leadForm: 'AW-18379237482/2j8oCN2Wt-EcEOrQ87tE',
 } as const
 
 type GtagWindow = Window & {
