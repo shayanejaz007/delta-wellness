@@ -4,7 +4,7 @@ export const SITE_URL =
 export const NAV_LINKS = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
-  { href: '/sessions', label: 'Sessions' },
+  // { href: '/sessions', label: 'Sessions' },
   { href: '/technology', label: 'Method' },
   { href: '/meta-genesis', label: 'Meta Genesis' },
   { href: '/research', label: 'Research' },
