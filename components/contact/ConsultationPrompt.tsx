@@ -74,27 +74,35 @@ export default function ConsultationPrompt() {
     if (snoozed) return
 
     let idle = 0
-    const timer = window.setTimeout(() => {
-      // Mount on an idle frame. At three seconds the hero entrance animations
-      // and the video crossfade may still be running; forcing a dialog into
-      // that frame is what produces a visible stutter. requestIdleCallback
-      // waits for a gap, with a timeout so it always fires regardless.
-      const schedule =
-        window.requestIdleCallback ??
-        ((cb: IdleRequestCallback) => window.setTimeout(() => cb({} as IdleDeadline), 0))
 
-      idle = schedule(
-        () => {
-          restoreFocusTo.current = document.activeElement
-          setOpen(true)
-        },
-        { timeout: 1200 },
-      ) as unknown as number
+    const timer = window.setTimeout(() => {
+      const show = () => {
+        restoreFocusTo.current = document.activeElement
+        setOpen(true)
+      }
+
+      // Mount on an idle frame where the browser supports it: at three seconds
+      // the hero entrance animations and the video crossfade may still be
+      // running, and forcing a dialog into that frame is what produces a
+      // visible stutter. The `timeout` guarantees it still fires on a busy
+      // page, and Safari — which lacks requestIdleCallback — falls back to
+      // showing it immediately.
+      //
+      // `.bind(window)` matters: browser APIs throw `Illegal invocation` when
+      // called detached from their receiver, which would silently swallow the
+      // dialog entirely.
+      if (typeof window.requestIdleCallback === 'function') {
+        idle = window.requestIdleCallback(show, { timeout: 1200 })
+      } else {
+        show()
+      }
     }, DELAY_MS)
 
     return () => {
       window.clearTimeout(timer)
-      if (idle && window.cancelIdleCallback) window.cancelIdleCallback(idle)
+      if (idle && typeof window.cancelIdleCallback === 'function') {
+        window.cancelIdleCallback(idle)
+      }
     }
   }, [suppressed])
 
