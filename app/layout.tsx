@@ -3,7 +3,11 @@ import { Instrument_Serif, Figtree, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
+import Script from 'next/script'
 import ConsultationPrompt from '@/components/contact/ConsultationPrompt'
+
+/** Google Ads conversion tag. */
+const GADS_ID = 'AW-18379237482'
 import RevealObserver from '@/components/ui/Reveal'
 import { SITE_URL } from '@/lib/seo'
 
@@ -91,6 +95,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${display.variable} ${sans.variable} ${mono.variable}`}
+      suppressHydrationWarning
     >
       <head>
         {/* Marks JS as available before first paint, so `.reveal` can hide
@@ -112,6 +117,26 @@ export default function RootLayout({
         <main id="main">{children}</main>
         <Footer />
         <ConsultationPrompt />
+
+        {/*
+          Google Ads tag, loaded through next/script rather than raw <script>
+          tags so Next controls when it runs. `afterInteractive` lets the page
+          paint and become usable first, then loads the tag — a marketing tag
+          blocking first paint costs real visitors, and Google Ads does not
+          need to fire before the page is visible.
+        */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GADS_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GADS_ID}');
+          `}
+        </Script>
         <RevealObserver />
         <script
           type="application/ld+json"

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { CONVERSIONS, reportConversion } from '@/lib/gtag'
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 type FieldErrors = Record<string, string[] | undefined>
@@ -90,6 +91,7 @@ export default function ConsultationForm() {
         'Thank you — your request has reached us. We will be in touch shortly to arrange a time, and a confirmation is on its way to your inbox.',
       )
       setStatus('sent')
+      reportConversion(CONVERSIONS.leadForm)
       formEl.reset()
     } catch {
       setNotice('Something went wrong sending that. Please try again.')
