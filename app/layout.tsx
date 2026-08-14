@@ -1,8 +1,9 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Instrument_Serif, Figtree, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
+import ConsultationPrompt from '@/components/contact/ConsultationPrompt'
 import RevealObserver from '@/components/ui/Reveal'
 import { SITE_URL } from '@/lib/seo'
 
@@ -57,6 +58,19 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 }
 
+/**
+ * `viewport-fit=cover` lets the page paint under the iPhone notch and home
+ * indicator; the safe-area padding in the prompt and footer relies on it.
+ * `maximumScale` is deliberately left alone — capping it blocks pinch-zoom,
+ * which is an accessibility failure for anyone who needs to magnify text.
+ */
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#F5F8FC',
+}
+
 /** Organization only. MedicalOrganization / Physician are not used: nothing in
  *  the supplied material establishes those classifications. */
 const organizationSchema = {
@@ -97,6 +111,7 @@ export default function RootLayout({
         <Nav />
         <main id="main">{children}</main>
         <Footer />
+        <ConsultationPrompt />
         <RevealObserver />
         <script
           type="application/ld+json"

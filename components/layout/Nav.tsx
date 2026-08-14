@@ -90,7 +90,7 @@ export default function Nav() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls="mobile-menu"
-          className="grid h-10 w-10 place-items-center lg:hidden"
+          className="-mr-1 grid h-11 w-11 place-items-center lg:hidden"
         >
           <span className="sr-only">{open ? 'Close menu' : 'Open menu'}</span>
           <span className="relative block h-3 w-5" aria-hidden="true">

@@ -54,6 +54,7 @@
   body {
     background: var(--paper);
     color: var(--body);
+    -webkit-text-size-adjust: 100%;
     font-family: var(--font-sans), system-ui, sans-serif;
     font-size: clamp(1rem, 0.97rem + 0.16vw, 1.0625rem);
     line-height: 1.65;
@@ -367,6 +368,11 @@
 
   .field {
     width: 100%;
+    /* 16px minimum. Safari on iOS zooms the viewport when a focused control
+       renders below 16px and never zooms back out, so any smaller size here
+       breaks the layout on iPhone the moment a field is tapped. Set on the
+       base class so no individual form can reintroduce the bug. */
+    font-size: 16px;
     border-radius: 14px;
     border: 1px solid rgba(255, 255, 255, 0.7);
     background: linear-gradient(
@@ -410,8 +416,19 @@
   /* Definition ledger: term / detail pairs on a shared hairline grid. */
   .ledger {
     display: grid;
-    grid-template-columns: minmax(7rem, auto) 1fr;
+    /* Single column on phones. A 7rem label column against a 320px viewport
+       leaves the value about 130px wide, which wraps long entries like the
+       studio address into a ragged sliver. */
+    grid-template-columns: 1fr;
     column-gap: clamp(1.25rem, 3vw, 2.5rem);
+  }
+  @media (min-width: 40em) {
+    .ledger { grid-template-columns: minmax(7rem, auto) 1fr; }
+  }
+  /* Stacked rows need the rule above the term, not above both cells. */
+  .ledger dd { border-top: 0; }
+  @media (min-width: 40em) {
+    .ledger dd { border-top: 1px solid var(--line); }
   }
   .ledger dt {
     font-family: var(--font-mono), monospace;
